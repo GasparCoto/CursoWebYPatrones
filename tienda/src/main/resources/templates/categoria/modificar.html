@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Humorous</title>
+        <meta charset="UTF-8"/>       
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <div class="contenido">
+            <h2>Información de Temporada</h2>
+            <a th:href="@{/temporada/listado/}">Regresar</a>
+            <hr/>
+            <form th:action="@{/temporada/guardar}"
+                  method="post"
+                  th:object="${temporada}">
+
+                <input type="hidden" name="idTemporada" th:field="*{idTemporada}"/>
+
+                <fieldset>
+                    <label for="descripcion">Descripción</label>
+                    <input type="text" name="descripcion" th:field="*{descripcion}"/>
+                </fieldset>
+
+                <fieldset>
+                    <label for="activo">Activo</label>
+                    <input type="checkbox" name="activo" th:field="*{activo}"/>
+                </fieldset>
+                <hr/>
+                <input type="submit" value="Guardar" name="guardar"/>            
+            </form>          
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

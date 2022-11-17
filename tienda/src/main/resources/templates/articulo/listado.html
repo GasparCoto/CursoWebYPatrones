@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Humorous</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>        
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Información de productos</h2>
+        <a th:href="@{/producto/nuevo}">Nuevo Producto</a>
+        <div th:if="${productos !=null and !productos.empty}">
+            <table border="1">
+                <tr>
+                    <th>Descripción</th>
+                    <th>Precio</th>
+                    <th>Existencias</th>
+                    <th>Activo</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+                <tr th:each="producto : ${productos}">
+                    <td>[[${producto.descripcion}]]</td>
+                    <td style="text-align: right">[[${#numbers.formatDecimal(producto.precio,3,2)}]]</td>
+                    <td style="text-align: center">[[${producto.existencias}]]</td>
+                    <td style="text-align: center"><input type="chechbox" name="activo" th:checked=${producto.activo}]] disabled="true"/></td><td><a th:href="@{/carrito/agregar/} + ${producto.idProducto}">Agregar</td> 
+                    <td><a th:href="@{/producto/eliminar/}+${producto.idProducto}">Eliminar</td>
+                    <td><a th:href="@{/producto/modificar/}+${producto.idProducto}">Modificar</td>
+                </tr>            
+            </table>
+        </div>
+
+        <div th:if="${productos ==null or productos.empty}">
+            <h2>No hay artículos que mostrar</h2>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Humorous</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Información de usuarios</h2>
+        <a th:href="@{/usuario/nuevo}">Nuevo Usuario</a>
+        <div th:if="${usuarios !=null and !usuarios.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellidos</th>
+                    <th>Correo</th>
+                    <th>Teléfono</th>
+                    <th>Fecha de Nacimiento</th>
+                    <th>Eliminar</th>
+                    <th>Modificar</th>
+                </tr>
+                <tr th:each="usuario : ${usuarios}">
+                    <td>[[${usuario.nombre}]]</td>
+                    <td>[[${usuario.apellidos}]]</td>
+                    <td>[[${usuario.correo}]]</td>
+                    <td>[[${usuario.telefono}]]</td>
+                    <td>[[${usuario.fecha}]]</td>
+                    <td style="text-align: right">[[${#numbers.formatDecimal(usuario.credito.limite,3,2)}]]</td> 
+                    <td><a th:href="@{/carrito/agregar/} + ${usuario.idUsuario}">Agregar</td>  
+                    <td><a th:href="@{/usuario/eliminar/}+${usuario.idUsuario}">Eliminar</td>
+                    <td><a th:href="@{/usuario/modificar/}+${usuario.idUsuario}">Modificar</td>
+                </tr>            
+            </table>
+        </div>
+
+        <div th:if="${usuarios ==null or usuarios.empty}">
+            <h2>No hay usuarios que mostrar</h2>
+        </div>
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

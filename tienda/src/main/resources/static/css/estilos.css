@@ -1,0 +1,18 @@
+h1,header {
+    background-color: green;
+    color: white
+}
+article header {
+    background-color: blueviolet;
+    color: white
+}
+
+h1,header {
+    background-color: salmon;
+    color: white
+}
+
+article header{
+    background-color: peachpuff;
+    color: white;
+}
