@@ -8,11 +8,11 @@
         <version>2.7.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.tienda</groupId>
+    <groupId>com.tiendaproyectog10</groupId>
     <artifactId>tienda</artifactId>
     <version>1</version>
     <name>tienda</name>
-    <description>Proyecto Tienda del curso WEB y Patrones</description>
+    <description>Proyecto Grupo 10 Tienda del curso WEB y Patrones</description>
     <properties>
         <java.version>17</java.version>
     </properties>

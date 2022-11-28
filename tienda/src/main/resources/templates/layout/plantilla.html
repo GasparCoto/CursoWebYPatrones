@@ -2,25 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Humorous</title>
+        <title>TechShop</title>
         <meta charset="UTF-8"/>        
     </head>
     <body>
 
         <header th:fragment="header" class="header">
             <nav class="nav">
-                <a th:href="@{/}" class="logo nav-link">Humorous</a>
+                <a th:href="@{/}" class="logo nav-link">TechShop</a>
                 <ul class="nav-menu">
                     <li class="nav-menu-item">
-                        <a th:href="@{/usuario/listado}" class="nav-menu-link nav-link">Usuarios</a>
+                        <a th:href="@{/cliente/listado}" class="nav-menu-link nav-link">Clientes</a>
                     </li>
 
                     <li class="nav-menu-item">
-                        <a th:href="@{/producto/listado}" class="nav-menu-link nav-link">Productos</a>
+                        <a th:href="@{/articulo/listado}" class="nav-menu-link nav-link">Artículos</a>
                     </li>
 
                     <li class="nav-menu-item">
-                        <a th:href="@{/temporada/listado}" class="nav-menu-link nav-link">Temporadas</a>
+                        <a th:href="@{/categoria/listado}" class="nav-menu-link nav-link">Categorías</a>
                     </li>
                 </ul>
             </nav>          

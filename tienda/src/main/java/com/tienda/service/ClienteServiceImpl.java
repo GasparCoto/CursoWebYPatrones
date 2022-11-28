@@ -20,6 +20,12 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<Cliente> buscarPorApellidos(String apellidos) {
+        return (List<Cliente>) clienteDao.findByApellidos(apellidos);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<Cliente> getClientes() {
         return (List<Cliente>) clienteDao.findAll();
     }
@@ -30,6 +36,12 @@ public class ClienteServiceImpl implements ClienteService {
         return clienteDao.findById(cliente.getIdCliente()).orElse(null);
     }
 
+    /*@Override
+    @Transactional
+    public void findBy(Cliente apellidos) 
+    {
+        clienteDao.findBy(apellidos);
+    } */
     @Override
     @Transactional
     public void save(Cliente cliente) {

@@ -2,21 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Humorous</title>
+        <title>TechShop</title>
         <meta charset="UTF-8"/>        
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-            <h2>Información de Producto</h2>
-            <a th:href="@{/producto/listado/}">Regresar</a>
+            <h2>Información de Artículo</h2>
+            <a th:href="@{/articulo/listado/}">Regresar</a>
             <hr/>
-            <form th:action="@{/producto/guardar}"
+            <form th:action="@{/articulo/guardar}"
                   method="post"
-                  th:object="${producto}">
+                  th:object="${articulo}">
 
-                <input type="hidden" name="idProducto" th:field="*{idProducto}"/>
+                <input type="hidden" name="idArticulo" th:field="*{idArticulo}"/>
+
                 <fieldset>
                     <label for="nombre">Descripción</label>
                     <input type="text" name="descripcion" th:field="*{descripcion}"/>

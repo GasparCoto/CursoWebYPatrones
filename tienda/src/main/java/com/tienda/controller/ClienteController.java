@@ -2,6 +2,7 @@ package com.tienda.controller;
 
 import com.tienda.domain.Cliente;
 import com.tienda.service.ClienteService;
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,20 @@ public class ClienteController {
     @Autowired
     private ClienteService clienteService;
 
+    @GetMapping("/cliente/busqueda")
+    public String buscar(Model model) {
+        var clientes = clienteService.buscarPorApellidos("apellidos");
+        model.addAttribute("clientes", clientes);
+        return "/cliente/busqueda";
+    }
+
+    @GetMapping("/cliente/resultado")
+    public String resultado(Model model) {
+        var clientes = clienteService.buscarPorApellidos("apellidos");
+        model.addAttribute("clientes", clientes);
+        return "/cliente/resultado";
+    }
+
     @GetMapping("/cliente/listado")
     public String listado(Model model) {
         var clientes = clienteService.getClientes();
@@ -29,6 +44,12 @@ public class ClienteController {
         return "/cliente/modificar";
     }
 
+    /* @PostMapping("/cliente/busqueda")
+    public String clienteBuscar(Cliente cliente) 
+    {   
+        clienteService.buscarPorApellidos("Contreras Mora");
+        return "redirect:/cliente/resultado";
+    }*/
     @PostMapping("/cliente/guardar")
     public String clienteGuardar(Cliente cliente) {
         clienteService.save(cliente);

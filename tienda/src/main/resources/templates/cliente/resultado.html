@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"/>
+        <h2>Resultado de Cliente (Modificar)</h2>
+        <a th:href="@{/cliente/busqueda/}">Regresar</a>
+        <hr/>
+        <!-- <form th:action="@{/cliente/busqueda}"
+               method="post"
+               th:object="${cliente}"> 
+
+             <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
+             <input type="hidden" name="idCredito" th:field="*{credito.idCredito}"/> -->
+        <fieldset>
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre"/>
+        </fieldset>
+        <fieldset>
+            <label for="apellidos">Apellidos</label>
+            <input type="text" name="apellidos"/>
+        </fieldset>
+        <fieldset>
+            <label for="correo">Correo</label>
+            <input type="email" name="correo"/>
+        </fieldset>
+        <fieldset>
+            <label for="telefono">Teléfono</label>
+            <input type="tel" name="telefono"/>
+        </fieldset>
+        <fieldset>
+            <label for="limite">Limite de Crédito</label>
+            <input type="number" name="limite"/>
+        </fieldset>
+        <hr/>
+        <a th:href="@{/cliente/listado/}">Guardar</a>
+
+        <footer th:replace="layout/plantilla :: footer"/>
+    </body>
+</html>

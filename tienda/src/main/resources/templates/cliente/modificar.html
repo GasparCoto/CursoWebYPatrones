@@ -2,21 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Humorous</title>
+        <title>TechShop</title>
         <meta charset="UTF-8"/>
         <link href="/css/menu.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-            <h2>Información de Usuario</h2>
-            <a th:href="@{/usuario/listado/}">Regresar</a>
+            <h2>Información de Cliente</h2>
+            <a th:href="@{/cliente/listado/}">Regresar</a>
             <hr/>
-            <form th:action="@{/usuario/guardar}"
+            <form th:action="@{/cliente/guardar}"
                   method="post"
-                  th:object="${usuario}">
+                  th:object="${cliente}">
 
-                <input type="hidden" name="idUsuario" th:field="*{idUsuario}"/>
+                <input type="hidden" name="idCliente" th:field="*{idCliente}"/>
                 <input type="hidden" name="idCredito" th:field="*{credito.idCredito}"/>
                 <fieldset>
                     <label for="nombre">Nombre</label>
@@ -35,12 +35,8 @@
                     <input type="tel" name="telefono" th:field="*{telefono}"/>
                 </fieldset>
                 <fieldset>
-                    <label for="fecha">Fecha de Nacimiento</label>
-                    <input type="text" name="fecha" th:field="*{fecha}"/>
-                </fieldset>
-                <fieldset>
                     <label for="limite">Limite de Crédito</label>
-                    <input type="number" name="limite" th:field="*{limite}"/>
+                    <input type="number" name="limite" th:field="*{credito.limite}"/>
                 </fieldset>
                 <hr/>
                 <input type="submit" value="Guardar" name="guardar"/>            
