@@ -8,32 +8,37 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ArticuloServiceImpl implements ArticuloService {
+public class ArticuloServiceImpl implements ArticuloService 
+{
 
     @Autowired
     private ArticuloDao articuloDao;
-
+    
     @Override
     @Transactional(readOnly = true)
-    public List<Articulo> getArticulos(boolean activos) {
-        return (List<Articulo>) articuloDao.findAll();
+    public List<Articulo> getArticulos(boolean activos) 
+    {
+        return (List<Articulo>)articuloDao.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Articulo getArticulo(Articulo articulo) {
+    public Articulo getArticulo(Articulo articulo) 
+    {
         return articuloDao.findById(articulo.getIdArticulo()).orElse(null);
     }
 
     @Override
     @Transactional
-    public void save(Articulo articulo) {
+    public void save(Articulo articulo) 
+    {
         articuloDao.save(articulo);
     }
 
     @Override
     @Transactional
-    public void delete(Articulo articulo) {
+    public void delete(Articulo articulo) 
+    {
         articuloDao.delete(articulo);
-    }
+    }   
 }

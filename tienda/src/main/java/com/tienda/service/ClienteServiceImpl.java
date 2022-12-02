@@ -10,41 +10,48 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class ClienteServiceImpl implements ClienteService {
+public class ClienteServiceImpl implements ClienteService 
+{
 
     @Autowired
     private ClienteDao clienteDao;
 
     @Autowired
     private CreditoDao creditoDao;
-
+    
     @Override
     @Transactional(readOnly = true)
-    public List<Cliente> buscarPorApellidos(String apellidos) {
-        return (List<Cliente>) clienteDao.findByApellidos(apellidos);
+    public List<Cliente> buscarPorApellidos(String apellidos) 
+    {
+        return (List<Cliente>)clienteDao.findByApellidos(apellidos);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<Cliente> getClientes() {
-        return (List<Cliente>) clienteDao.findAll();
+    public List<Cliente> getClientes() 
+    {
+        return (List<Cliente>)clienteDao.findAll();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public Cliente getCliente(Cliente cliente) {
+    public Cliente getCliente(Cliente cliente) 
+    {
         return clienteDao.findById(cliente.getIdCliente()).orElse(null);
     }
-
-    /*@Override
+    
+   /*@Override
     @Transactional
     public void findBy(Cliente apellidos) 
     {
         clienteDao.findBy(apellidos);
     } */
+
+
     @Override
     @Transactional
-    public void save(Cliente cliente) {
+    public void save(Cliente cliente) 
+    {
         Credito credito = cliente.getCredito();
 
         credito = creditoDao.save(credito);
@@ -56,7 +63,8 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     @Transactional
-    public void delete(Cliente cliente) {
+    public void delete(Cliente cliente) 
+    {
         clienteDao.delete(cliente);
     }
 }

@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns="http://www.w3.org/1999/xhtml">
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://wwww.thymeleaf.org" 
+      xmlns:sec="http://thymeleaft.org/extras/spring-security">
+    <head th:replace="layout/plantilla :: head" >
         <title>TechShop</title>
-        <meta charset="UTF-8"/>
-        <link href="/css/menu.css" rel="stylesheet" type="text/css"/>        
+        <meta charset="UTF-8"/>  
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
-        <h2>Información de artículos</h2>
-        <a th:href="@{/articulo/nuevo}">Nuevo Artículo</a>
+        <h2>Información de Artículo</h2>
+        <h3>[[#{articulo.titulo}]]</h3>
+        <a th:href="@{/articulo/nuevo}">[[#{articulo.nuevo}]]</a>
         <div th:if="${articulos !=null and !articulos.empty}">
             <table border="1">
                 <tr>
-                    <th>Descripción</th>
-                    <th>Detalle</th>
-                    <th>Precio</th>
+                    <th>[[#{articulo.descripcion}]]</th>
+                    <th>[[#{articulo.detalle}]]</th>
+                    <th>[[#{articulo.precio}]]</th>
                     <th>Existencias</th>
                     <th>Activo</th>
-                    <th>Eliminar</th>
-                    <th>Modificar</th>
+                    <th>[[#{accion.eliminar}]]</th>
+                    <th>[[#{accion.actualizar}]]</th>
                 </tr>
                 <tr th:each="articulo : ${articulos}">
                     <td>[[${articulo.descripcion}]]</td>
@@ -33,14 +34,14 @@
                             th:checked= "${articulo.activo}" 
                             disabled="true"/>
                     </td> 
-                    <td><a th:href="@{/articulo/eliminar/}+${articulo.idArticulo}">Eliminar</a></td>
-                    <td><a th:href="@{/articulo/modificar/}+${articulo.idArticulo}">Modificar</a></td>
+                    <td><a th:href="@{/articulo/eliminar/}+${articulo.idArticulo}">[[#{accion.eliminar}]]</a></td>
+                    <td><a th:href="@{/articulo/modificar/}+${articulo.idArticulo}">[[#{accion.actualizar}]]</a></td>
                 </tr>            
             </table>
         </div>
-
+        
         <div th:if="${articulos ==null or articulos.empty}">
-            <h2>No hay artículos que mostrar</h2>
+            <h2>[[#articulo.no_mostrar}]]</h2>
         </div>
         <footer th:replace="layout/plantilla :: footer"/>
     </body>
