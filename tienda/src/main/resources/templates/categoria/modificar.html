@@ -1,37 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://wwww.thymeleaf.org" 
-      xmlns:sec="http://thymeleaft.org/extras/spring-security">
-    <head th:replace="layout/plantilla :: head" >
+    <head th:replace="layout/plantilla :: head">
         <title>TechShop</title>
-        <meta charset="UTF-8"/>
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"/>
         <div class="contenido">
-            <h2>Modificación de Categoría</h2>
-            <h3>[[#{categoria.datos}]]</h3>
-            <a th:href="@{/categoria/listado/}">[[#{accion.regresar}]]</a>
+            <h2>Información de Categoria</h2>
+            <a th:href="@{/categoria/listado}">Regresar</a>
             <hr/>
             <form th:action="@{/categoria/guardar}"
                   method="post"
                   th:object="${categoria}">
 
                 <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
-               
                 <fieldset>
-                    <label for="descripcion">[[#{categoria.descripcion}]]</label>
+                    <label for="descripcion">Descripcion</label>
                     <input type="text" name="descripcion" th:field="*{descripcion}"/>
                 </fieldset>
-                
                 <fieldset>
                     <label for="activo">Activo</label>
                     <input type="checkbox" name="activo" th:field="*{activo}"/>
-                </fieldset>
+                </fieldset>                
                 <hr/>
-                <button type="submit" th:text="#{accion.guardar}"/>          
-            </form> 
-        <hr/>
+                <input type="submit" value="Guardar" name="guardar"/>            
+            </form>        
         </div>
         <footer th:replace="layout/plantilla :: footer"/>
     </body>

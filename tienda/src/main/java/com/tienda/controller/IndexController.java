@@ -9,16 +9,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Slf4j
-public class IndexController 
-{
+public class IndexController {
+    
     @Autowired
     private ArticuloService articuloService;
-
-   @GetMapping("/")
-    public String listado(Model model) 
-    {
-        var articulos = articuloService.getArticulos(true);
-        model.addAttribute("articulos", articulos);
+    
+    @GetMapping("/")
+    public String inicio(Model model) {        
+        var articulos=articuloService.getArticulos(true);
+        model.addAttribute("articulos",articulos);
         return "index";
     }
 }

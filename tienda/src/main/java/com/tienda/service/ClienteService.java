@@ -3,8 +3,7 @@ package com.tienda.service;
 import com.tienda.domain.Cliente;
 import java.util.List;
 
-public interface ClienteService 
-{
+public interface ClienteService {
     
     //Los métodos para hacer un CRUD de la tabla cliente
     //Create Read Update Delete
@@ -17,6 +16,5 @@ public interface ClienteService
     
     public void delete(Cliente cliente);
     
-    public List<Cliente> buscarPorApellidos(String apellidos);
-    
+    public List<Cliente> buscarPorNombre(String nombre);
 }

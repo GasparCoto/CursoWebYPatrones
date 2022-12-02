@@ -9,30 +9,26 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter
-{
-    //El siguiente método funciona para hacer la auttenticación del usuario
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
     
    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception
-    {
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
                 .withUser("juan")
                     .password("{noop}123")
                     .roles("ADMIN","VENDEDOR","USER")
                 .and()
                 .withUser("rebeca")
-                    .password("{noop}123")
+                    .password("{noop}456")
                     .roles("VENDEDOR","USER")
                 .and()
                 .withUser("pedro")
-                    .password("{noop}123")
+                    .password("{noop}789")
                     .roles("USER");
     }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception
-    {
+    protected void configure(HttpSecurity http) throws Exception{
         http.authorizeRequests()
                 .antMatchers("/articulo/nuevo",        "/articulo/guardar", 
                              "/articulo/modificar/**", "/articulo/eliminar/**",
@@ -40,7 +36,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
                              "/categoria/modificar/**","/categoria/eliminar/**",
                              "/cliente/nuevo",         "/cliente/guardar",  
                              "/cliente/modificar/**",  "/cliente/eliminar/**",
-                             "/usuario/listado",  
                              "/usuario/nuevo",         "/usuario/guardar",  
                              "/usuario/modificar/**",  "/usuario/eliminar/**")
                     .hasRole("ADMIN")
